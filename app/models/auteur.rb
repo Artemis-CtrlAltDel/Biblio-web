@@ -1,0 +1,2 @@
+class Auteur < ApplicationRecord
+end
