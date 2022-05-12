@@ -2,6 +2,11 @@ class Document < ApplicationRecord
   belongs_to :auteur
   belongs_to :adherent
 
+  validates_presence_of :titre, on: :create, message: "titre can't be blank"
+  validates_presence_of :categorie, on: :create, message: "categoriecan't be blank"
+  validates_presence_of :status, on: :create, message: "status can't be blank"
+  validates_uniqueness_of :code, confirmation: { case_sensitive: false }
+
   enum :status, {
     En_Rupture: false,
     Disponible: true

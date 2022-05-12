@@ -5,11 +5,11 @@ one:
   prenom: MyString
   email: MyString
   password_digest: MyString
-  is_admin: false
+  quota: 1
 
 two:
   nom: MyString
   prenom: MyString
   email: MyString
   password_digest: MyString
-  is_admin: false
+  quota: 1
