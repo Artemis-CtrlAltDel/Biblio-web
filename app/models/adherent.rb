@@ -1,6 +1,8 @@
 class Adherent < ApplicationRecord
     has_many :materiels, dependent: :destroy
 
+    has_secure_password
+
     validates_presence_of :nom, on: :create, message: "nom can't be blank"
 
     validates_presence_of :prenom, on: :create, message: "prenom can't be blank"
