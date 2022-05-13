@@ -4,7 +4,7 @@ class Document < ApplicationRecord
 
   validates_presence_of :titre, on: :create, message: "titre can't be blank"
   
-  validates_presence_of :categorie, on: :create, message: "categoriecan't be blank"
+  validates_presence_of :categorie, on: :create, message: "categorie can't be blank"
 
   validates_presence_of :status, on: :create, message: "status can't be blank"
 

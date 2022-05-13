@@ -1,0 +1,2 @@
+class AuteursController < ApplicationController
+end
