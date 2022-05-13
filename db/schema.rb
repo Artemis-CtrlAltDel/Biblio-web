@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_12_195610) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_13_204516) do
   create_table "adherents", force: :cascade do |t|
     t.string "nom"
     t.string "prenom"
     t.string "email"
     t.string "password_digest"
-    t.integer "quota"
+    t.integer "quota", default: 5
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -30,14 +30,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_12_195610) do
 
   create_table "documents", force: :cascade do |t|
     t.integer "auteur_id", null: false
-    t.integer "adherent_id", null: false
     t.string "code"
     t.string "titre"
+    t.string "publie"
+    t.string "langue"
     t.integer "categorie"
     t.boolean "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["adherent_id"], name: "index_documents_on_adherent_id"
     t.index ["auteur_id"], name: "index_documents_on_auteur_id"
   end
 
@@ -60,7 +60,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_12_195610) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "documents", "adherents"
   add_foreign_key "documents", "auteurs"
   add_foreign_key "materiels", "adherents"
 end

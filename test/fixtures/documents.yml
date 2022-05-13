@@ -2,16 +2,18 @@
 
 one:
   auteur: one
-  adherent: one
   code: MyString
   titre: MyString
+  publie: MyString
+  langue: MyString
   categorie: 1
   status: false
 
 two:
   auteur: two
-  adherent: two
   code: MyString
   titre: MyString
+  publie: MyString
+  langue: MyString
   categorie: 1
   status: false

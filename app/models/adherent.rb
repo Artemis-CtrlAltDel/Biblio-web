@@ -1,5 +1,4 @@
 class Adherent < ApplicationRecord
-    has_many :documents, dependent: :destroy
     has_many :materiels, dependent: :destroy
 
     validates_presence_of :nom, on: :create, message: "nom can't be blank"
