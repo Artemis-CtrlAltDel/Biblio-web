@@ -1,5 +1,5 @@
 class ResposController < ApplicationController
-    before_action :set_admin, only: [:show, :edit, :update, :destroy]
+    before_action :set_admin, only: [:show, :edit, :update, :destroy, :show_adherents, :show_auteurs, :show_materiels]
     before_action :authenticate_admin!
 
     # GET /respos

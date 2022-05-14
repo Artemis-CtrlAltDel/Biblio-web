@@ -5,7 +5,9 @@ class AdherentsessionsController < ApplicationController
     end
     
     def sign_in_adherent
-        @adherent = Adherent.find_by(email: params[:adherent][:email].downcase)
+        puts "email : ",params[:adherent][:email]
+        @adherent = Adherent.find_by(email: params[:adherent][:email])
+        puts "adherent : ", @adherent
         if @adherent && @adherent.authenticate(params[:adherent][:password])
             log_in(@adherent)
             redirect_to @adherent
@@ -23,17 +25,13 @@ class AdherentsessionsController < ApplicationController
     end
     
     def create
-        puts 1
         @adherent = Adherent.new(adherent_params)
-        puts 2
         if @adherent.save
-            puts 3
           flash[:success] = "Adherent successfully created"
           redirect_to '/publics/index'
         else
-            puts 4
           flash[:error] = "Something went wrong"
-          render 'new'
+          redirect_to '/create_adherent'
         end
     end
     
@@ -45,6 +43,6 @@ class AdherentsessionsController < ApplicationController
 
     private
         def adherent_params
-            params.require(:adherent).permit
+            params.require(:adherent).permit!
         end
 end

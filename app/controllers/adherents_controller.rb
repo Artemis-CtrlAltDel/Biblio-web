@@ -7,6 +7,13 @@ class AdherentsController < ApplicationController
     end
     # GET /adherents/:id
     def show
+        @adherent = current_adherent
+        puts @adherent
+        if logged_in?
+            flash[:success] = "ok"
+        else
+            flash[:danger] = "bruh"
+        end
     end
     # GET /adherents/new
     def new
