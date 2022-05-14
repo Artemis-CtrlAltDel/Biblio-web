@@ -13,8 +13,13 @@ Rails.application.routes.draw do
   get '/add_materiels' => 'materiels#new', :as => 'add_materiels'
   get '/show_materiels' => 'respos#show_materiels', :as => 'show_materiels'
 
+  # Login : respo
   get '/sign_in_respo' => 'resposessions#index'
   post '/sign_in_respo' => 'resposessions#sign_in_respo'
+
+  # Login : adherent
+  get '/sign_in_adherent' => 'adherentsessions#index'
+  post '/sign_in_adherent' => 'adherentsessions#sign_in_adherent'
 
   resources :publics
   root 'publics#index'

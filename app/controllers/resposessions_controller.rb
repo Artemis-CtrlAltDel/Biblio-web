@@ -27,7 +27,7 @@ class ResposessionsController < ApplicationController
 
     def destroy
         log_out
-        redirect_to login_url
+        redirect_to '/sign_in_respo'
     end
 
 end

@@ -1,0 +1,9 @@
+<h1>AdherentSessions#index</h1>
+
+<hr>
+<%= form_for @adherent, :url => { :action => 'sign_in_adherent' }  do |f| %>
+    <%= f.text_field :email, placeholder: "email" %>
+    <%= f.password_field :password, placeholder: "password" %>
+
+    <%= f.submit "Submit", disable_with: 'Submiting...', class: 'btn btn-outline-primary login-btn' %>
+<% end %>
