@@ -7,7 +7,6 @@ class DocumentsController < ApplicationController
     end
     # GET /documents/:id
     def show
-        @document = Document.find()
     end
     # GET /documents/new
     def new
