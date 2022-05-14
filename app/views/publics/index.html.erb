@@ -1,2 +1,32 @@
 <h1>Publics#index</h1>
-<p>Find me in app/views/publics/index.html.erb</p>
+
+<div style="display:flex; flex-direction:row">
+    <div style="display:flex;flex-direction:column;flex-wrap:wrap;width:100%;text-align:center;overflow:hidden;margin: 20px">
+    <h3>Pour les Responsables</h3>
+    <div style="width:100%">
+        <hr>
+        <pre>Vous avez déjà un compte ?</pre>
+        <%= link_to "sign_in", '/sign_in_respo' %>
+    </div>
+    <hr>
+    <div style="width:100%">
+        <hr>
+        <pre>Vous n'avez pas de compte ?</pre>
+        <%= link_to "sign_up", '/sign_up' %>
+    </div>
+</div>
+<div style="display:flex;flex-direction:column;flex-wrap:wrap;width:100%;text-align:center;overflow:hidden;margin: 20px">
+    <h3>Pour les Adherents</h3>
+    <div style="width:100%">
+        <hr>
+        <pre>Vous avez déjà un compte ?</pre>
+        <%= link_to "sign_in", '/sign_in' %>
+    </div>
+    <hr>
+    <div style="width:100%">
+        <hr>
+        <pre>Vous n'avez pas de compte ?</pre>
+        <%= link_to "sign_up", '/sign_up' %>
+    </div>
+</div>
+</div>

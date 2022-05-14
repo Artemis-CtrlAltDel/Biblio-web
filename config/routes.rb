@@ -13,6 +13,9 @@ Rails.application.routes.draw do
   get '/add_materiels' => 'materiels#new', :as => 'add_materiels'
   get '/show_materiels' => 'respos#show_materiels', :as => 'show_materiels'
 
+  get '/sign_in_respo' => 'resposessions#index'
+  post '/sign_in_respo' => 'resposessions#sign_in_respo'
+
   resources :publics
   root 'publics#index'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

@@ -1,0 +1,2 @@
+class AdherentsessionsController < ApplicationController
+end
