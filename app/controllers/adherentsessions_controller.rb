@@ -16,18 +16,35 @@ class AdherentsessionsController < ApplicationController
     end
 
     def new
+        @adherent = Adherent.new
     end
     
     def show
     end
     
     def create
-        #todo : sign up
+        puts 1
+        @adherent = Adherent.new(adherent_params)
+        puts 2
+        if @adherent.save
+            puts 3
+          flash[:success] = "Adherent successfully created"
+          redirect_to '/publics/index'
+        else
+            puts 4
+          flash[:error] = "Something went wrong"
+          render 'new'
+        end
     end
+    
 
     def destroy
         log_out
         redirect_to '/sign_in_adherent'
     end
 
+    private
+        def adherent_params
+            params.require(:adherent).permit
+        end
 end

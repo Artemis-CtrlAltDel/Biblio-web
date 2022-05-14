@@ -17,9 +17,17 @@ Rails.application.routes.draw do
   get '/sign_in_respo' => 'resposessions#index'
   post '/sign_in_respo' => 'resposessions#sign_in_respo'
 
+  # Sign up : respo
+  get '/create_respo' => 'resposessions#new', :as => '/create_respo'
+  post '/create' => 'resposessions#create'
+
   # Login : adherent
   get '/sign_in_adherent' => 'adherentsessions#index'
   post '/sign_in_adherent' => 'adherentsessions#sign_in_adherent'
+
+  # Sign up : adherent
+  get '/create_adherent' => 'adherentsessions#new', :as => '/create_adherent'
+  post '/create_adherent' => 'adherentsessions#create'
 
   resources :publics
   root 'publics#index'

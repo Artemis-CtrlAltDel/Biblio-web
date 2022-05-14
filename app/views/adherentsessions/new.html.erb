@@ -1,0 +1,26 @@
+<h1>AdherentSessions#new</h1>
+
+<%= form_for @adherent, :url => { :action => 'create' } do |f| %>
+    <div style="margin:10px 0">
+        <div class="input-group">
+            <span class="input-group-text">Nom & Prenom</span>
+            <%= f.text_field :nom, placeholder:"Nom", class:"form-control"%>
+            <%= f.text_field :prenom, placeholder:"Prenom", class:"form-control"%>
+        </div>
+    </div>
+    <div style="margin:10px 0">
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1">@</span>
+            <%= f.text_field :email, class:"form-control", placeholder:"Votre e-mail" %>
+        </div>
+    </div>
+    <div style="margin:10px 0">
+        <div class="input-group mb-3">
+            <%= f.password_field :password, placeholder:"Mot de passe", class:"form-control" %>
+        </div>
+    </div>
+
+    <div style="margin:20px 0">
+        <%= f.submit "Submit", disable_with: 'Submiting...', class:"btn btn-primary" %>
+    </div>
+<% end %>

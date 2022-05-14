@@ -1,9 +1,22 @@
-<h1>RespoSessions#index</h1>
+<div class="container">
+
+    <h1>RespoSessions#index</h1>
 
 <hr>
 <%= form_for @respo, :url => { :action => 'sign_in_respo' }  do |f| %>
-    <%= f.text_field :email, placeholder: "email" %>
-    <%= f.password_field :password, placeholder: "password" %>
+    <div style = "margin: 10px 0">
+        <%=f.label :email, "Email" %><br>
+        <%= f.text_field :email, placeholder: "Taper ici" %><br>
+    </div>
 
-    <%= f.submit "Submit", disable_with: 'Submiting...', class: 'btn btn-outline-primary login-btn' %>
+    <div style = "margin: 10px 0">
+        <%=f.label :password, "Password" %><br>
+        <%= f.password_field :password, placeholder: "Taper ici" %><br>
+    </div>
+    
+    <div style = "margin: 20px 0">
+        <%= f.submit "Submit", disable_with: 'Submiting...', class: 'btn btn-outline-primary login-btn' %>
+    </div>
 <% end %>
+
+</div>
