@@ -1,10 +1,10 @@
-<h1>Adherent#show</h1>
+<h1>Adherents#show</h1>
 
 <div class="card" style="width: fit-content;">
   <div class="card-body">
     <h5 class="card-title"><%= " #{@adherent.nom} #{@adherent.prenom} #{@adherent.id} " %></h5>
     <p class="card-text">Email : <%= @adherent.email %></p>
     <p class="card-text">Quota : <%= @adherent.quota %></p>
-    <a href="#" class="btn btn-primary">Editer profile</a>
+    <%= link_to "Editer profile", "/adherents/#{@adherent.id}/edit", class:"btn btn-primary" %>
   </div>
 </div>

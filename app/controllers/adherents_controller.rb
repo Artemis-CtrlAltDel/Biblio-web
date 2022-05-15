@@ -8,12 +8,6 @@ class AdherentsController < ApplicationController
     # GET /adherents/:id
     def show
         @adherent = current_adherent
-        puts @adherent
-        if logged_in?
-            flash[:success] = "ok"
-        else
-            flash[:danger] = "bruh"
-        end
     end
     # GET /adherents/new
     def new
@@ -21,7 +15,8 @@ class AdherentsController < ApplicationController
     end
     # GET /adherents/:id/edit
     def edit
-    end    
+    end
+    
     # POST /adherents
     def create
         @adherent = Adherent.new(adherent_params)
@@ -36,7 +31,7 @@ class AdherentsController < ApplicationController
     # PATCH /adherents/:id
     def update
         @adherent = Adherent.find(params[:id])
-        if @adherent.update_attributes(adherent_params)
+        if @adherent.update_attributes(params[:adherent])
           flash[:success] = "Adherent was successfully updated"
           redirect_to @adherent
         else
@@ -44,6 +39,7 @@ class AdherentsController < ApplicationController
           render 'edit'
         end
     end
+    
     # DESTROY /adherents/:id
     def destroy
         @adherent = Adherent.find(params[:id])

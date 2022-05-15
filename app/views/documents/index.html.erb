@@ -1,0 +1,38 @@
+<h1>Documents#index</h1>
+
+<% if !@documents.blank? %>
+    <div class="container">
+        <div class="row">
+            <% for item in @documents %>
+                <div class="col">
+                    <div class="card" style="width: fit-content;">
+                        <div class="card-body">
+                            <h5 class="card-title"><%= " #{item.titre} #{item.code} " %></h5>
+                            <p class="card-text">Auteur : <%= item.auteur %></p>
+                            <p class="card-text">Langue : <%= item.langue %></p>
+                            <p class="card-text">Publie : <%= item.publie %></p>
+                            <p class="card-text">Categorie : <%= item.categorie %></p>
+                            <p class="card-text">Status : <%= item.status %></p>
+                            <div class="row">
+                                <div class="col">
+                                    <a class="btn btn-primary"><%= link_to 'Supprimer Livre', '/destroy_livre' %></a>
+                                </div>
+                                <% if item.status == 1 %>
+                                    <div class="col">
+                                        <a class="btn btn-primary"><%= link_to 'Emprunter Livre', '/emprunter_livre' %></a>
+                                    </div>
+                                <% else %>
+                                    <div class="col">
+                                        <a class="btn btn-primary"><%= link_to 'Rendre Livre', '/rendre_livre' %></a>
+                                    </div>
+                                <% end %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <% end %>
+        </div>
+    </div>
+<% else %>
+    bruh
+<% end %>

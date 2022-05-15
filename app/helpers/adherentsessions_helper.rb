@@ -6,9 +6,6 @@ module AdherentsessionsHelper
 
     def current_adherent
         @current_adherent ||= Adherent.find_by(id: session[:adherent_id]) if session[:adherent_id]
-        if @current_adherent.nil?
-            redirect_to '/sign_in_adherent'
-        end
         @current_adherent
     end
 
