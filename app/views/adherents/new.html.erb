@@ -1,6 +1,6 @@
-<h1>RespoSessions#new</h1>
+<h1>Adherentss#new</h1>
 
-<%= form_for @respo, :url => { :action => 'create' } do |f| %>
+<%= form_for @adherent, :url => { :action => 'create' } do |f| %>
     <div style="margin:10px 0">
         <div class="input-group">
             <span class="input-group-text">Nom & Prenom</span>
@@ -11,7 +11,7 @@
     <div style="margin:10px 0">
         <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon1">@</span>
-            <%= f.text_field :email, class:"form-control", placeholder:"Votre e-mail | eg : ...@uit.ac.ma" %>
+            <%= f.text_field :email, class:"form-control", placeholder:"Votre e-mail" %>
         </div>
     </div>
     <div style="margin:10px 0">

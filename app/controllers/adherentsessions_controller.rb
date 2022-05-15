@@ -1,43 +1,33 @@
 class AdherentsessionsController < ApplicationController
 
-    def index
+    # before_action :redirect_logged_in, only:[:new,:create]
+    
+    def new
+        if logged_in?
+            redirect_to current_adherent
+        end
         @adherent = Adherent.new
     end
-    
-    def sign_in_adherent
-        @adherent = Adherent.find_by(email: params[:adherent][:email].downcase)
+
+    def create
+        if logged_in?
+            redirect_to current_adherent
+        end
+        
+        @adherent = Adherent.find_by email: params[:adherent][:email].downcase
+
         if @adherent && @adherent.authenticate(params[:adherent][:password])
-            log_in(@adherent)
+            session[:adherent_id] = @adherent.id
             redirect_to @adherent
         else
-            flash[:danger] = "Adherent : La combinaison email/password est invalide"
-            redirect_to '/sign_in_adherent'
+            flash[:danger] = 'Combinaison Email/Mot de passe invalide'
+            redirect_to login_path
         end
     end
-
-    def new
-        @adherent = Adherent.new
-    end
-    
-    def show
-    end
-    
-    def create
-        @adherent = Adherent.new(adherent_params)
-        if @adherent.save
-          flash[:success] = "Adherent successfully created"
-          redirect_to sign_in_adherent_url
-        else
-          flash[:error] = "Something went wrong"
-          redirect_to '/create_adherent'
-        end
-    end
-    
 
     def destroy
-        flash[:success] = "Vous avez déconnecter"
         log_out
-        redirect_to '/sign_in_adherent'
+        redirect_to login_path
     end
 
     private

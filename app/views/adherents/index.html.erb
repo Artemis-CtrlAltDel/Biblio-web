@@ -7,21 +7,12 @@
                 <div class="col">
                     <div class="card" style="width: fit-content;">
                         <div class="card-body">
-                            <h5 class="card-title"><%= " #{item.type} #{item.code} " %></h5>
-                            <p class="card-text">Status : <%= item.status %></p>
+                            <h5 class="card-title"><%= " #{item.nom} #{item.prenom} " %></h5>
+                            <p class="card-text">email : <%= item.email %></p>
                             <div class="row">
                                 <div class="col">
-                                    <a class="btn btn-primary"><%= link_to 'Supprimer Materiel', '/destroy_materiel' %></a>
+                                    <%= link_to 'Supprimer Adherent', item, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-primary" %>
                                 </div>
-                                <% if item.status == 1 %>
-                                    <div class="col">
-                                        <a class="btn btn-primary"><%= link_to 'Emprunter Materiel', '/emprunter_materiel' %></a>
-                                    </div>
-                                <% else %>
-                                    <div class="col">
-                                        <a class="btn btn-primary"><%= link_to 'Rendre Materiel', '/rendre_materiel' %></a>
-                                    </div>
-                                <% end %>
                             </div>
                         </div>
                     </div>

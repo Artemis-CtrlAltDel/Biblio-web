@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_15_131350) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_15_145214) do
   create_table "adherents", force: :cascade do |t|
     t.string "nom"
     t.string "prenom"
@@ -20,6 +20,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_15_131350) do
     t.integer "quota_materiel", default: 5
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "admin", default: false
   end
 
   create_table "auteurs", force: :cascade do |t|
@@ -50,15 +51,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_15_131350) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["adherent_id"], name: "index_materiels_on_adherent_id"
-  end
-
-  create_table "respos", force: :cascade do |t|
-    t.string "nom"
-    t.string "prenom"
-    t.string "email"
-    t.string "password_digest"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   add_foreign_key "documents", "auteurs"

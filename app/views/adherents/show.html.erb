@@ -7,6 +7,6 @@
     <p class="card-text">Quota (sur documents) : <%= @adherent.quota_document %></p>
     <p class="card-text">Quota (sur materiels) : <%= @adherent.quota_materiel %></p>
     <%= link_to "Editer profile", "/adherents/#{@adherent.id}/edit", class:"btn btn-primary" %>
-    <%= link_to "Déconnexion", "/destroy", class:"btn btn-outline-danger" %>
+    <%= link_to "Déconnexion", "/logout", method: :DELETE, class:"btn btn-outline-danger" %>
   </div>
 </div>

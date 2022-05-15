@@ -1,17 +1,17 @@
 <h1>Adherents#edit</h1>
 
-<%= form_for current_adherent, :url => { :action => 'update' } do |f| %>
+<%= form_for @adherent, :url => { :action => 'update' } do |f| %>
     <div style="margin:10px 0">
         <div class="input-group">
             <span class="input-group-text">Nom & Prenom</span>
-            <%= f.text_field :nom, placeholder:"Nom", class:"form-control", value:current_adherent.nom%>
-            <%= f.text_field :prenom, placeholder:"Prenom", class:"form-control", value:current_adherent.prenom%>
+            <%= f.text_field :nom, placeholder:"Nom", class:"form-control", value:@adherent.nom%>
+            <%= f.text_field :prenom, placeholder:"Prenom", class:"form-control", value:@adherent.prenom%>
         </div>
     </div>
     <div style="margin:10px 0">
         <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon1">@</span>
-            <%= f.text_field :email, class:"form-control", value:current_adherent.email, placeholder:"Votre e-mail" %>
+            <%= f.text_field :email, class:"form-control", value:@adherent.email, placeholder:"Votre e-mail" %>
         </div>
     </div>
     <div style="margin:10px 0">
