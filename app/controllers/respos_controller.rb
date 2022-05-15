@@ -7,6 +7,7 @@ class ResposController < ApplicationController
     end
     # GET /respos/:id
     def show
+        @respo = current_respo
     end
     # GET /respos/new
     def new
@@ -29,7 +30,7 @@ class ResposController < ApplicationController
     # PATCH /respos/:id
     def update
         @respo = Respo.find(params[:id])
-        if @respo.update_attributes(respo_params)
+        if @respo.update(respo_params)
           flash[:success] = "Respo was successfully updated"
           redirect_to @respo
         else
@@ -61,7 +62,20 @@ class ResposController < ApplicationController
 
     private
         def set_respo
-            @respo = Respo.find(params[:id])
+            if Respo.find_by(id: params[:id]).nil?
+                flash[:danger] = "Respo avec id : "+params[:id]+" n'existe pas."
+                redirect_to "/sign_in_respo"
+            end
+
+            if current_respo.nil?
+                flash[:error] = "Vous n'êtes pas connecter"
+                redirect_to '/sign_in_respo'
+            elsif Respo.find_by(id: params[:id]).id != current_respo.id
+                flash[:danger] = "Respo avec id : "+params[:id]+" n'est pas connecté."
+                redirect_to "/sign_in_respo"
+            end
+
+            @adherent = current_respo
         end
         def respo_params
             params.require(:respo).permit!

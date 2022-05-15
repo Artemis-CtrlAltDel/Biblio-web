@@ -4,7 +4,8 @@
   <div class="card-body">
     <h5 class="card-title"><%= " #{@adherent.nom} #{@adherent.prenom} " %></h5>
     <p class="card-text">Email : <%= @adherent.email %></p>
-    <p class="card-text">Quota : <%= @adherent.quota %></p>
+    <p class="card-text">Quota (sur documents) : <%= @adherent.quota_document %></p>
+    <p class="card-text">Quota (sur materiels) : <%= @adherent.quota_materiel %></p>
     <%= link_to "Editer profile", "/adherents/#{@adherent.id}/edit", class:"btn btn-primary" %>
     <%= link_to "Déconnexion", "/destroy", class:"btn btn-outline-danger" %>
   </div>

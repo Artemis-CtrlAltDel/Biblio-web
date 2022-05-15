@@ -1,0 +1,38 @@
+<h1>Adherents#index</h1>
+
+<% if !@adherents.blank? %>
+    <div class="container">
+        <div class="row">
+            <% for item in @adherents %>
+                <div class="col">
+                    <div class="card" style="width: fit-content;">
+                        <div class="card-body">
+                            <h5 class="card-title"><%= " #{item.type} #{item.code} " %></h5>
+                            <p class="card-text">Status : <%= item.status %></p>
+                            <div class="row">
+                                <div class="col">
+                                    <a class="btn btn-primary"><%= link_to 'Supprimer Materiel', '/destroy_materiel' %></a>
+                                </div>
+                                <% if item.status == 1 %>
+                                    <div class="col">
+                                        <a class="btn btn-primary"><%= link_to 'Emprunter Materiel', '/emprunter_materiel' %></a>
+                                    </div>
+                                <% else %>
+                                    <div class="col">
+                                        <a class="btn btn-primary"><%= link_to 'Rendre Materiel', '/rendre_materiel' %></a>
+                                    </div>
+                                <% end %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <% end %>
+        </div>
+    </div>
+<% else %>
+    <div class="card">
+        <div class="card-body">
+            Section des adherents est vide.
+        </div>
+    </div>
+<% end %>

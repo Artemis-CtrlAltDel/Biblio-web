@@ -1,5 +1,6 @@
 class AdherentsController < ApplicationController
     before_action :set_adherent, only: [:show, :edit, :update, :destroy]
+    before_action :is_respo, only: [:index]
 
     # GET /adherents
     def index
@@ -68,6 +69,9 @@ class AdherentsController < ApplicationController
             end
 
             @adherent = current_adherent
+        end
+        def is_respo?
+            render 'index' unless current_respo.nil?
         end
         def adherent_params
             params.require(:adherent).permit!    

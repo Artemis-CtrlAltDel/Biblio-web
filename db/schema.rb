@@ -16,8 +16,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_15_131350) do
     t.string "prenom"
     t.string "email"
     t.string "password_digest"
-    t.integer "quota_document"
-    t.integer "quota_materiel"
+    t.integer "quota_document", default: 5
+    t.integer "quota_materiel", default: 5
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

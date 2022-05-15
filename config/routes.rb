@@ -12,21 +12,24 @@ Rails.application.routes.draw do
   # Login : respo
   get '/sign_in_respo' => 'resposessions#index'
   post '/sign_in_respo' => 'resposessions#sign_in_respo'
-
-  # Sign up : respo
-  get '/create_respo' => 'resposessions#new', :as => '/create_respo'
-  post '/create_respo' => 'resposessions#create'
-
+  
   # Login : adherent
   get '/sign_in_adherent' => 'adherentsessions#index'
   post '/sign_in_adherent' => 'adherentsessions#sign_in_adherent'
 
+  # Sign up : respo
+  get '/create_respo' => 'resposessions#new', :as => 'create_respo'
+  post '/create_respo' => 'resposessions#create'
+  
+  # Sign up : adherent
+  get '/create_adherent' => 'adherentsessions#new', :as => 'create_adherent'
+  post '/create_adherent' => 'adherentsessions#create'
+
   # Logout : adherent
   get '/destroy' => 'adherentsessions#destroy'
 
-  # Sign up : adherent
-  get '/create_adherent' => 'adherentsessions#new', :as => '/create_adherent'
-  post '/create_adherent' => 'adherentsessions#create'
+  # Logout : respo
+  get '/destroy' => 'adherentsessions#destroy'
 
   resources :publics
   root 'publics#index'

@@ -2,6 +2,7 @@ module AdherentsessionsHelper
 
     def log_in(adherent)
         session[:adherent_id] = @adherent.id
+        sign_out
     end
 
     def current_adherent
