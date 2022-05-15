@@ -3,22 +3,22 @@ class MaterielsController < ApplicationController
 
     # GET /materiels
     def index
-        @materiels = materiel.all
+        @materiels = Materiel.all
     end
     # GET /materiels/:id
     def show
-        @materiel = materiel.find()
+        @materiel = Materiel.find()
     end
     # GET /materiels/new
     def new
-        @materiel = materiel.new
+        @materiel = Materiel.new
     end
     # GET /materiels/:id/edit
     def edit
     end
     # POST /materiels
     def create
-        @materiel = materiel.new(materiel_params)
+        @materiel = Materiel.new(materiel_params)
         if @materiel.save
           flash[:success] = "materiel successfully created"
           redirect_to @materiel
@@ -29,7 +29,7 @@ class MaterielsController < ApplicationController
     end
     # PATCH /materiels/:id/edit
     def update
-        @materiel = materiel.find(params[:id])
+        @materiel = Materiel.find(params[:id])
         if @materiel.update_attributes(materiel_params)
           flash[:success] = "materiel was successfully updated"
           redirect_to @materiel
@@ -40,7 +40,7 @@ class MaterielsController < ApplicationController
     end
     # DESTROY /materiels/:id
     def destroy
-        @materiel = materiel.find(params[:id])
+        @materiel = Materiel.find(params[:id])
         if @materiel.destroy
             flash[:success] = 'materiel was successfully deleted.'
             redirect_to materiels_url
@@ -52,7 +52,7 @@ class MaterielsController < ApplicationController
 
     private
         def set_materiel
-            @materiel = materiel.find(params[:id])
+            @materiel = Materiel.find(params[:id])
         end
         def materiel_params
             params.require(:materiel).permit!

@@ -1,29 +1,25 @@
-<h1>Documents#index</h1>
+<h1>Materiels#index</h1>
 
-<% if !@documents.blank? %>
+<% if !@materiels.blank? %>
     <div class="container">
         <div class="row">
-            <% for item in @documents %>
+            <% for item in @materiels %>
                 <div class="col">
                     <div class="card" style="width: fit-content;">
                         <div class="card-body">
-                            <h5 class="card-title"><%= " #{item.titre} #{item.code} " %></h5>
-                            <p class="card-text">Auteur : <%= item.auteur %></p>
-                            <p class="card-text">Langue : <%= item.langue %></p>
-                            <p class="card-text">Publie : <%= item.publie %></p>
-                            <p class="card-text">Categorie : <%= item.categorie %></p>
+                            <h5 class="card-title"><%= " #{item.type} #{item.code} " %></h5>
                             <p class="card-text">Status : <%= item.status %></p>
                             <div class="row">
                                 <div class="col">
-                                    <a class="btn btn-primary"><%= link_to 'Supprimer Livre', '/destroy_livre' %></a>
+                                    <a class="btn btn-primary"><%= link_to 'Supprimer Materiel', '/destroy_materiel' %></a>
                                 </div>
                                 <% if item.status == 1 %>
                                     <div class="col">
-                                        <a class="btn btn-primary"><%= link_to 'Emprunter Livre', '/emprunter_livre' %></a>
+                                        <a class="btn btn-primary"><%= link_to 'Emprunter Materiel', '/emprunter_materiel' %></a>
                                     </div>
                                 <% else %>
                                     <div class="col">
-                                        <a class="btn btn-primary"><%= link_to 'Rendre Livre', '/rendre_livre' %></a>
+                                        <a class="btn btn-primary"><%= link_to 'Rendre Materiel', '/rendre_materiel' %></a>
                                     </div>
                                 <% end %>
                             </div>
@@ -36,7 +32,7 @@
 <% else %>
     <div class="card">
         <div class="card-body">
-            Section des documents est vide.
+            Section des materiels est vide.
         </div>
     </div>
 <% end %>
