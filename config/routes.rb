@@ -21,6 +21,9 @@ Rails.application.routes.draw do
   get '/sign_in_adherent' => 'adherentsessions#index'
   post '/sign_in_adherent' => 'adherentsessions#sign_in_adherent'
 
+  # Logout : adherent
+  get '/destroy' => 'adherentsessions#destroy'
+
   # Sign up : adherent
   get '/create_adherent' => 'adherentsessions#new', :as => '/create_adherent'
   post '/create_adherent' => 'adherentsessions#create'

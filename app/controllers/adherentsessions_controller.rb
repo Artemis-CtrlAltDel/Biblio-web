@@ -8,7 +8,7 @@ class AdherentsessionsController < ApplicationController
         @adherent = Adherent.find_by(email: params[:adherent][:email].downcase)
         if @adherent && @adherent.authenticate(params[:adherent][:password])
             log_in(@adherent)
-            redirect_to current_adherent
+            redirect_to @adherent
         else
             flash[:danger] = "Adherent : La combinaison email/password est invalide"
             redirect_to '/sign_in_adherent'
@@ -35,6 +35,7 @@ class AdherentsessionsController < ApplicationController
     
 
     def destroy
+        flash[:success] = "Vous avez déconnecter"
         log_out
         redirect_to '/sign_in_adherent'
     end

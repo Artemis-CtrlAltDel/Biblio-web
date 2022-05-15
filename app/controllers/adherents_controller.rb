@@ -31,11 +31,11 @@ class AdherentsController < ApplicationController
     # PATCH /adherents/:id
     def update
         @adherent = Adherent.find(params[:id])
-        if @adherent.update_attributes(params[:adherent])
+        if @adherent.update(adherent_params)
           flash[:success] = "Adherent was successfully updated"
           redirect_to @adherent
         else
-          flash[:error] = "Something went wrong"
+          flash[:danger] = "Something went wrong"
           render 'edit'
         end
     end
@@ -52,10 +52,22 @@ class AdherentsController < ApplicationController
         end
     end
 
-
     private
         def set_adherent
-            @adherent = Adherent.find(params[:id])
+            if Adherent.find_by(id: params[:id]).nil?
+                flash[:danger] = "Adherent avec id : "+params[:id]+" n'existe pas."
+                redirect_to "/sign_in_adherent"
+            end
+
+            if current_adherent.nil?
+                flash[:error] = "Vous n'êtes pas connecter"
+                redirect_to '/sign_in_adherent'
+            elsif Adherent.find_by(id: params[:id]).id != current_adherent.id
+                flash[:danger] = "Adherent avec id : "+params[:id]+" n'est pas connecté."
+                redirect_to "/sign_in_adherent"
+            end
+
+            @adherent = current_adherent
         end
         def adherent_params
             params.require(:adherent).permit!    

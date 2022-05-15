@@ -5,11 +5,13 @@ one:
   prenom: MyString
   email: MyString
   password_digest: MyString
-  quota: 1
+  quota_document: 1
+  quota_materiel: 1
 
 two:
   nom: MyString
   prenom: MyString
   email: MyString
   password_digest: MyString
-  quota: 1
+  quota_document: 1
+  quota_materiel: 1

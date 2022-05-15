@@ -1,57 +1,25 @@
-<div class="container">
 <h1>Publics#index</h1>
-  <div class="row">
-    <div class="col">
-      <div class="card" style="width: 18rem;width:100%">
-    <div class="card-body">
-        <h5 class="card-title">Pour les</h5>
-        <h6 class="card-subtitle mb-2 text-muted">Responsables</h6>
-        <div class="container overflow-hidden">
-            <div class="row gx-5">
-            <hr class="dropdown-divider">
-                <div class="col">
-                    <div class="p-3 border bg-light">
-                        <p class="card-text">Vous avez déjà un compte ?</p>
-                        <%= link_to "sign in", '/sign_in_respo', class:"card-link" %>
+
+
+<div class="row">
+            <div class="col">
+                <div class="card" style="width: 100%;">
+                    <div class="card-body">
+                        <h5 class="card-title">Connecter à votre compte :</h5>
+                        <p class="card-text">Si vous avez un compte; En cliquant sur une des bouttons vous pouvez acceder a votre compte.</p>
+                        <%= link_to "Pour responsable", '/sign_in_respo', class:"btn btn-primary" %>
+                        <%= link_to "Pour adherent", '/sign_in_adherent', class:"btn btn-outline-primary" %>
                     </div>
-                    <hr class="dropdown-divider">
                 </div>
-                <div class="col">
-                    <p class="card-text">Vous n'avez pas de compte. ?</p>
-                    <%= link_to "sign up", '/create_respo', class:"card-link" %>
-                </div>
-            </div>    
-        </div>        
-    </div>        
-</div>
-    </div>
-    <div class="col">
-      <div class="card" style="width: 18rem;width:100%">
-    <div class="card-body">
-        <h5 class="card-title">Pour les</h5>
-        <h6 class="card-subtitle mb-2 text-muted">Adherents</h6>
-        <div class="container overflow-hidden">
-            
-            <div class="row gx-5">
-            <hr class="dropdown-divider">
-                <div class="col">
-                    <div class="p-3 border bg-light">
-                        <p class="card-text">Vous avez déjà un compte ?</p>
-                        <%= link_to "sign in", '/sign_in_adherent', class:"card-link" %>
+            </div>
+            <div class="col">
+                <div class="card" style="width: 100%;">
+                    <div class="card-body">
+                        <h5 class="card-title">Creer votre compte :</h5>
+                        <p class="card-text">Si vous ne disposez pas d'un compte; En cliquant sur une des bouttons vous pouvez le créer.</p>
+                        <%= link_to "Pour responsable", '/create_respo', class:"btn btn-primary" %>
+                        <%= link_to "Pour adherent", '/create_adherent', class:"btn btn-outline-primary" %>
                     </div>
-                <hr class="dropdown-divider">
                 </div>
-                <div class="col">
-                    <p class="card-text">Vous n'avez pas de compte. ?</p>
-                    <%= link_to "sign up", '/create_adherent', class:"card-link" %>
-                </div>
-            </div>    
-        </div>        
-    </div>        
-</div>
-    </div>
-  </div>
-</div>
-
-
-
+            </div>
+        </div>

@@ -10,13 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_13_204516) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_15_131350) do
   create_table "adherents", force: :cascade do |t|
     t.string "nom"
     t.string "prenom"
     t.string "email"
     t.string "password_digest"
-    t.integer "quota", default: 5
+    t.integer "quota_document"
+    t.integer "quota_materiel"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
