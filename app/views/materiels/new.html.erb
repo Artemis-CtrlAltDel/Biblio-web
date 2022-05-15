@@ -1,0 +1,35 @@
+<h1>Materiels#new</h1>
+
+<%= form_for @materiel, :url => { :action => 'create' } do |f| %>
+    <div style="margin:10px 0;width:fit-content">
+        <div class="input-group">
+            <span class="input-group-text">Code </span>
+            <%= f.text_field :code, placeholder:"Le code pour le materiel", class:"form-control"%>
+        </div>
+    </div>
+    <div style="margin:10px 0">
+        <div class="input-group mb-3">
+            <span class="input-group-text">Type </span>
+            <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                <%= f.radio_button :type, 0, value: 0, class:"btn-check", id:"btnradio1", name:"btnradio", autocomplete:"off", checked:true %>
+                <label class="btn btn-outline-dark" for="btnradio1">Laptop</label>
+
+                <%= f.radio_button :type, 1, class:"btn-check", id:"btnradio2", name:"btnradio", autocomplete:"off" %>
+                <label class="btn btn-outline-dark" for="btnradio2">Souris</label>
+
+                <%= f.radio_button :type, 2, class:"btn-check", id:"btnradio3", name:"btnradio", autocomplete:"off" %>
+                <label class="btn btn-outline-dark" for="btnradio3">Clavier</label>
+
+                <%= f.radio_button :type, 3, class:"btn-check", id:"btnradio4", name:"btnradio", autocomplete:"off" %>              
+                <label class="btn btn-outline-dark" for="btnradio4">CD</label>
+
+                <%= f.radio_button :type, 4, class:"btn-check", id:"btnradio5", name:"btnradio", autocomplete:"off" %>             
+                <label class="btn btn-outline-dark" for="btnradio5">USB</label>
+            </div>
+        </div>
+    </div>
+
+    <div style="margin:20px 0">
+        <%= f.submit "Submit", disable_with: 'Submiting...', class:"btn btn-primary" %>
+    </div>
+<% end %>

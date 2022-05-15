@@ -1,6 +1,4 @@
-<div class="container">
-
-    <h1>AdherentSessions#new</h1>
+<h1>AdherentSessions#new</h1>
 
 <hr>
 <%= form_for @adherent, :url => { :action => 'create' }  do |f| %>
@@ -18,4 +16,3 @@
         <%= f.submit "Submit", disable_with: 'Submiting...', class: 'btn btn-outline-primary login-btn' %>
     </div>
 <% end %>
-</div>

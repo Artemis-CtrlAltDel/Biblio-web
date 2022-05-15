@@ -4,11 +4,16 @@ Rails.application.routes.draw do
   resources :documents
   resources :materiels
 
-  get '/signup', to: 'adherents#new'
-  post '/signup', to: 'adherents#create'
-  get '/login', to: 'adherentsessions#new'
-  post '/sessions', to: 'adherentsessions#create'
-  get "/logout", to: "adherentsessions#destroy"
+  get '/signup' => 'adherents#new'
+  post '/signup' => 'adherents#create'
+  get '/login' => 'adherentsessions#new'
+  post '/sessions' => 'adherentsessions#create'
+  delete "/logout" => "adherentsessions#destroy"
+
+  post '/adherents/:id/admin' => 'adherents#grant_admin'
+
+  post '/materiels/:id/emprunter' => 'materiels#emprunter_materiel'
+  post '/materiels/:id/rendre' => 'materiels#rendre_materiel'
 
   resources :publics
   root 'publics#index'

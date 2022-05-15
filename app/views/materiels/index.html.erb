@@ -1,33 +1,95 @@
 <h1>Materiels#index</h1>
 
-<% if !@materiels.blank? %>
-    <div class="container">
-        <div class="row">
-            <% for item in @materiels %>
-                <div class="col">
-                    <div class="card" style="width: fit-content;">
+
+<% if !@current_adherent.admin? %>
+    <br>
+    <hr>
+    <h5>Materiels que vous disposez :</h5>
+
+    <div style="display:flex; flex-wrap:wrap; gap:.8rem;">
+        <% if !@current_adherent.materiels.blank? %>
+            <% for item in @current_adherent.materiels %>
+                    
+                    <div class="card" style="flex: 1 1 max(20%, 200px);">
                         <div class="card-body">
                             <h5 class="card-title"><%= " #{item.type} #{item.code} " %></h5>
                             <p class="card-text">Status : <%= item.status %></p>
                             <div class="row">
                                 <div class="col">
-                                    <a class="btn btn-primary"><%= link_to 'Supprimer Materiel', '/destroy_materiel' %></a>
+                                    <%= link_to "Rendre", '/materiels/'+item.id.to_s+'/rendre', method: :post, class:"btn btn-outline-dark", style:"width:100%;margin: 5px 0" %>
                                 </div>
-                                <% if item.status == 1 %>
-                                    <div class="col">
-                                        <a class="btn btn-primary"><%= link_to 'Emprunter Materiel', '/emprunter_materiel' %></a>
-                                    </div>
-                                <% else %>
-                                    <div class="col">
-                                        <a class="btn btn-primary"><%= link_to 'Rendre Materiel', '/rendre_materiel' %></a>
-                                    </div>
-                                <% end %>
+                            </div>
+                        </div>
+                    </div>
+            <% end %>
+        <% else %>
+            <div class="card">
+                <div class="card-body">
+                    Section des materiels <strong>empruntés</strong> est vide.
+                </div>
+            </div>
+        <% end %>
+    
+    </div>
+<% end %>
+
+<br>
+<hr>
+<h5>Materiels qu'ils sont disponibles pour vous :</h5>
+
+<% if !@materiels.blank? %>
+    <div style="display:flex; flex-wrap:wrap; gap:.8rem;">
+        <% if @current_adherent.admin? %>
+                <div class="card" style="width: 100%;margin: 20px 0">
+                    <div class="card-body">
+                        <h5 class="card-title">Ajouter materiel :</h5>
+                        <p class="card-text">Pour ajouter un materiel cliquer sur la boutton dessous.</p>
+                        <%= link_to "Ajouter document", '/materiels/new', class:"btn btn-primary" %>
+                    </div>
+                </div>
+            
+            <% for item in @materiels %>
+                
+                <div class="card" style="flex: 1 1 max(20%, 200px);">
+                    <div class="card-body">
+                        <h5 class="card-title"><%= " #{item.type} #{item.code} " %></h5>
+                        <p class="card-text">Status : <%= item.status %></p>
+                        <div class="row">
+                            <div class="col">
+                                <%= link_to "Supprimer", item, method: :delete, class:"btn btn-outline-danger", style:"width:100%;margin: 5px 0" %>
                             </div>
                         </div>
                     </div>
                 </div>
             <% end %>
-        </div>
+
+        <% else %>
+            <% for item in @materiels.filter { |materiel| materiel.status.include? 'Disponible' } %>
+                
+                <div class="card" style="flex: 1 1 max(20%, 200px);">
+                    <div class="card-body">
+                        <h5 class="card-title"><%= " #{item.type} #{item.code} " %></h5>
+                        <p class="card-text">Status : <%= item.status %></p>
+                        <div class="row">
+                            <div class="col">
+                                <%= link_to "Emprunter", '/materiels/'+item.id.to_s+'/emprunter', method: :post, class:"btn btn-primary", style:"width:100%;margin: 5px 0" %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <% end %>
+
+            
+            <% if @materiels.filter { |materiel| materiel.status.include? 'Disponible' }.blank? %>
+                <div class="card">
+                    <div class="card-body">
+                        Section des materiels <strong>disponibles</strong> est vide.
+                    </div>
+                </div>
+            <% end %>
+            
+        <% end %>
+
     </div>
 <% else %>
     <div class="card">
@@ -35,4 +97,15 @@
             Section des materiels est vide.
         </div>
     </div>
+    
+    <% if @current_adherent.admin? %>
+        <div class="card" style="width: 100%;margin: 20px 0">
+            <div class="card-body">
+                <h5 class="card-title">Ajouter materiel :</h5>
+                <p class="card-text">Pour ajouter un materiel cliquer sur la boutton dessous.</p>
+                <%= link_to "Ajouter document", '/materiels/new', class:"btn btn-primary" %>
+            </div>
+        </div>
+    <% end %>
+    
 <% end %>

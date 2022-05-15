@@ -1,25 +1,28 @@
 <h1>Adherents#index</h1>
 
-<% if !@adherents.blank? %>
-    <div class="container">
+<% if !@adherents.filter { |adherent| !adherent.admin }.blank? %>
         <div class="row">
             <% for item in @adherents %>
-                <div class="col">
-                    <div class="card" style="width: fit-content;">
-                        <div class="card-body">
-                            <h5 class="card-title"><%= " #{item.nom} #{item.prenom} " %></h5>
-                            <p class="card-text">email : <%= item.email %></p>
-                            <div class="row">
-                                <div class="col">
-                                    <%= link_to 'Supprimer Adherent', item, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-primary" %>
-                                </div>
+                
+                <% if !item.admin %>
+                    
+                    <div class="col">
+                        <div class="card" style="width: 100%;margin: 20px 0">
+                            <div class="card-body">
+                                <h5 class="card-title"><%= " #{item.nom} #{item.prenom} " %> ( indice : <%= item.id %> )</h5>
+                                <p class="card-text">Email : <%= item.email %></p>
+                                <p class="card-text">Quota (sur documents) : <%= item.quota_document %></p>
+                                <p class="card-text">Quota (sur materiels) : <%= item.quota_materiel %></p>
+                                <%= link_to "Grant admin", '/adherents/'+item.id.to_s+"/admin", method: :post, class:"btn btn-dark" %>
+                                <%= link_to "Supprimer Adherent", item, method: :DELETE, class:"btn btn-outline-danger" %>
                             </div>
                         </div>
                     </div>
-                </div>
+
+                <% end %>
+    
             <% end %>
         </div>
-    </div>
 <% else %>
     <div class="card">
         <div class="card-body">

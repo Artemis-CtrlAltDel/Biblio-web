@@ -1,5 +1,5 @@
 class Materiel < ApplicationRecord
-  belongs_to :adherent
+  belongs_to :adherent, optional: true
 
   validates_presence_of :status, on: :create, message: "status can't be blank"
 

@@ -1,6 +1,6 @@
 class AdherentsController < ApplicationController
-    before_action :authenticate, only: [:edit, :update, :show, :index]
-    before_action :utilisateur_admin?, only: [:edit, :update, :show]
+    before_action :authenticate, only: [:edit, :update, :show, :index, :grant_admin]
+    before_action :utilisateur_admin?, only: [:edit, :update, :show, :grant_admin]
     # before_action :redirect_logged_in, only: [:new, :create]
 
   def index
@@ -67,6 +67,18 @@ class AdherentsController < ApplicationController
       flash[:error] = 'Something went wrong'
       redirect_to adherents_url
     end
+  end
+  
+  def grant_admin
+    @adherent = Adherent.find(params[:id])
+    if !@current_adherent.admin
+      redirect_to @adherent
+    end
+
+    @adherent.update_attribute(:admin, true)
+    flash[:success] = "Adherent avec id : "+@adherent.id.to_s+" a devenu un responsable"
+    redirect_to adherents_url
+
   end
   
 

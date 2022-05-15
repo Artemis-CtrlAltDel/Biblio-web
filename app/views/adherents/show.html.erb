@@ -1,12 +1,18 @@
 <h1>Adherents#show</h1>
 
-<div class="card" style="width: fit-content;">
+<div class="card" style="width: 100%;">
   <div class="card-body">
     <h5 class="card-title"><%= " #{@adherent.nom} #{@adherent.prenom} " %></h5>
     <p class="card-text">Email : <%= @adherent.email %></p>
-    <p class="card-text">Quota (sur documents) : <%= @adherent.quota_document %></p>
-    <p class="card-text">Quota (sur materiels) : <%= @adherent.quota_materiel %></p>
+    
+    <% if !@adherent.admin? %>
+      <p class="card-text">Quota (sur documents) : <%= @adherent.quota_document %></p>
+      <p class="card-text">Quota (sur materiels) : <%= @adherent.quota_materiel %></p>
+    <% else %>
+      <p class="card-text">Role : <span class="fw-semibold">Admin</span></p>
+    <% end %>
+
     <%= link_to "Editer profile", "/adherents/#{@adherent.id}/edit", class:"btn btn-primary" %>
-    <%= link_to "Déconnexion", "/logout", method: :DELETE, class:"btn btn-outline-danger" %>
+    <%= link_to "Déconnexion", logout_url, method: :delete, class:"btn btn-outline-danger" %>
   </div>
 </div>

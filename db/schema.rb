@@ -44,7 +44,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_15_145214) do
   end
 
   create_table "materiels", force: :cascade do |t|
-    t.integer "adherent_id", null: false
+    t.integer "adherent_id"
     t.string "code"
     t.integer "type"
     t.boolean "status"
