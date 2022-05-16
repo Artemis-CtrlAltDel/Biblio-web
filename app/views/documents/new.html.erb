@@ -1,0 +1,64 @@
+<h1>Documents#new</h1>
+
+<%= form_for @document, :url => { :action => 'create' } do |f| %>
+    <div class="card">
+        <div class="card-body">
+    <div style="margin:10px 0;width:100%">
+        <div class="input-group">
+            <span class="input-group-text" style="width:8.5em">Titre </span>
+            <%= f.text_field :titre, placeholder:"Le titre pour le document", class:"form-control"%>
+        </div>
+    </div>
+    <div style="margin:10px 0;width:100%">
+        <div class="input-group">
+            <span class="input-group-text" style="width:8.5em">Code </span>
+            <%= f.text_field :code, placeholder:"Le code pour le document", class:"form-control"%>
+        </div>
+    </div>
+    <div style="margin:10px 0;width:100%">
+        <div class="input-group">
+            <span class="input-group-text" style="width:8.5em">Publie </span>
+            <%= f.text_field :publie, placeholder:"La date de publication pour le document", class:"form-control"%>
+        </div>
+    </div>
+    <div style="margin:10px 0;width:100%">
+        <div class="input-group">
+            <span class="input-group-text" style="width:8.5em">Langue </span>
+            <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                <%= f.radio_button :langue, :langue, :value => 0, class:"btn-check", id:"btnradio1", name:"btnradio", autocomplete:"off", checked:true %>
+                <label class="btn btn-outline-dark" for="btnradio1">Français</label>
+
+                <%= f.radio_button :langue, 1, class:"btn-check", id:"btnradio2", name:"btnradio", autocomplete:"off" %>
+                <label class="btn btn-outline-dark" for="btnradio2">Arabe</label>
+
+                <%= f.radio_button :langue, 2, class:"btn-check", id:"btnradio3", name:"btnradio", autocomplete:"off" %>
+                <label class="btn btn-outline-dark" for="btnradio3">Anglais</label>
+            </div>
+        </div>
+    </div>
+    <div style="margin:10px 0;width:100%">
+        <div class="input-group">
+            <span class="input-group-text" style="width:8.5em">Catégorie </span>
+            <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                <%= f.radio_button :categorie, 0, class:"btn-check", id:"btnradio3", name:"categorieradio", autocomplete:"off", checked:true %>
+                <label class="btn btn-outline-dark" for="categorieradio3">Horreur</label>
+
+                <%= f.radio_button :categorie, 1, class:"btn-check", id:"categorieradio4", name:"categorieradio", autocomplete:"off" %>
+                <label class="btn btn-outline-dark" for="categorieradio4">Comédie</label>
+
+                <%= f.radio_button :categorie, 2, class:"btn-check", id:"categorieradio5", name:"categorieradio", autocomplete:"off" %>
+                <label class="btn btn-outline-dark" for="categorieradio5">Mystère</label>
+
+                <%= f.radio_button :categorie, 3, class:"btn-check", id:"categorieradio6", name:"categorieradio", autocomplete:"off" %>              
+                <label class="btn btn-outline-dark" for="categorieradio6">Drama</label>
+            </div>
+        </div>
+    </div>
+
+    <div style="margin:20px 0;width:100%">
+        <%= f.submit "Submit", disable_with: 'Submiting...', class:"btn btn-primary", style:"width:100%" %>
+    </div>
+
+    </div>
+    </div>
+<% end %>

@@ -15,6 +15,9 @@ Rails.application.routes.draw do
   post '/materiels/:id/emprunter' => 'materiels#emprunter_materiel'
   post '/materiels/:id/rendre' => 'materiels#rendre_materiel'
 
+  post '/documents/:id/emprunter' => 'documents#emprunter_document'
+  post '/documents/:id/rendre' => 'documents#rendre_document'
+
   resources :publics
   root 'publics#index'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

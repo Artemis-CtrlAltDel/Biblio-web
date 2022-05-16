@@ -1,6 +1,8 @@
 class Adherent < ApplicationRecord
 
     has_many :materiels, dependent: :nullify
+    has_many :documents, dependent: :nullify
+
     before_save {self.email = email.downcase}
     has_secure_password
 

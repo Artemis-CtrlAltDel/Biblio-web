@@ -1,26 +1,35 @@
 <h1>Adherentss#new</h1>
 
 <%= form_for @adherent, :url => { :action => 'create' } do |f| %>
-    <div style="margin:10px 0">
+
+    <div class="card">
+        <div class="card-body">
+
+    <div style="margin:10px 0;width:100%">
         <div class="input-group">
-            <span class="input-group-text">Nom & Prenom</span>
+            <span class="input-group-text" style="width:8.5em">Nom & Prenom</span>
             <%= f.text_field :nom, placeholder:"Nom", class:"form-control"%>
             <%= f.text_field :prenom, placeholder:"Prenom", class:"form-control"%>
         </div>
     </div>
-    <div style="margin:10px 0">
+    <div style="margin:10px 0;width:100%">
         <div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon1">@</span>
+            <span class="input-group-text" id="basic-addon1" style="width:8.5em">E-mail</span>
             <%= f.text_field :email, class:"form-control", placeholder:"Votre e-mail" %>
         </div>
     </div>
-    <div style="margin:10px 0">
+    <div style="margin:10px 0;width:100%">
         <div class="input-group mb-3">
-            <%= f.password_field :password, placeholder:"Mot de passe", class:"form-control" %>
+            <span class="input-group-text" id="basic-addon1" style="width:8.5em">Password</span>
+            <%= f.password_field :password, placeholder: "Entrez votre mot de passe", class:"form-control" %><br>
         </div>
     </div>
 
-    <div style="margin:20px 0">
-        <%= f.submit "Submit", disable_with: 'Submiting...', class:"btn btn-primary" %>
+    <div style="margin-bottom:10px; margin-top:30px;width:100%">
+        <%= f.submit "Submit", disable_with: 'Submiting...', class:"btn btn-primary", style:"width:100%" %>
     </div>
+
+    </div>
+    </div>
+
 <% end %>

@@ -6,31 +6,32 @@
     <hr>
     <h5>Materiels que vous disposez :</h5>
 
-    <div style="display:flex; flex-wrap:wrap; gap:.8rem;">
-        <% if !@current_adherent.materiels.blank? %>
-            <% for item in @current_adherent.materiels %>
-                    
-                    <div class="card" style="flex: 1 1 max(20%, 200px);">
-                        <div class="card-body">
-                            <h5 class="card-title"><%= " #{item.type} #{item.code} " %></h5>
-                            <p class="card-text">Status : <%= item.status %></p>
-                            <div class="row">
-                                <div class="col">
-                                    <%= link_to "Rendre", '/materiels/'+item.id.to_s+'/rendre', method: :post, class:"btn btn-outline-dark", style:"width:100%;margin: 5px 0" %>
+    <% if !@current_adherent.materiels.blank? %>
+        <div style="display:flex; flex-wrap:wrap; gap:.8rem;">
+                <% for item in @current_adherent.materiels %>
+                        
+                        <div class="card" style="flex: 1 1 max(20%, 200px);">
+                            <div class="card-body">
+                                <h5 class="card-title"><%= " #{item.type} #{item.code} " %></h5>
+                                <p class="card-text">Status : <%= item.status %></p>
+                                <div class="row">
+                                    <div class="col">
+                                        <%= link_to "Rendre", '/materiels/'+item.id.to_s+'/rendre', method: :post, class:"btn btn-outline-dark", style:"width:100%;margin: 5px 0" %>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-            <% end %>
-        <% else %>
-            <div class="card">
-                <div class="card-body">
-                    Section des materiels <strong>empruntés</strong> est vide.
-                </div>
+                <% end %>
+        </div>
+
+    <% else %>
+        <div class="card">
+            <div class="card-body">
+                Section des materiels <strong>empruntés</strong> est vide.
             </div>
-        <% end %>
+        </div>
+    <% end %>
     
-    </div>
 <% end %>
 
 <br>
@@ -54,6 +55,11 @@
                     <div class="card-body">
                         <h5 class="card-title"><%= " #{item.type} #{item.code} " %></h5>
                         <p class="card-text">Status : <%= item.status %></p>
+                        <% if @current_adherent.admin? && !item.adherent_id.nil? %>
+                            <p class="card-text">Emprunteur : <%= " #{Adherent.find(item.adherent_id).nom} #{Adherent.find(item.adherent_id).prenom} " %></p>
+                        <% else %>
+                            <p class="card-text">Emprunteur : <i class="fa-solid fa-ban"></i> </p>
+                        <% end %>
                         <div class="row">
                             <div class="col">
                                 <%= link_to "Supprimer", item, method: :delete, class:"btn btn-outline-danger", style:"width:100%;margin: 5px 0" %>

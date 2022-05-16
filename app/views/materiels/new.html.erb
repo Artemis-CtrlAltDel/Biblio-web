@@ -1,15 +1,17 @@
 <h1>Materiels#new</h1>
 
 <%= form_for @materiel, :url => { :action => 'create' } do |f| %>
-    <div style="margin:10px 0;width:fit-content">
+    <div class="card">
+        <div class="card-body">
+    <div style="margin:10px 0;width:100%">
         <div class="input-group">
-            <span class="input-group-text">Code </span>
+            <span class="input-group-text" style="width:8.5em">Code </span>
             <%= f.text_field :code, placeholder:"Le code pour le materiel", class:"form-control"%>
         </div>
     </div>
-    <div style="margin:10px 0">
+    <div style="margin:10px 0; width:100%">
         <div class="input-group mb-3">
-            <span class="input-group-text">Type </span>
+            <span class="input-group-text" style="width:8.5em">Type </span>
             <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
                 <%= f.radio_button :type, 0, value: 0, class:"btn-check", id:"btnradio1", name:"btnradio", autocomplete:"off", checked:true %>
                 <label class="btn btn-outline-dark" for="btnradio1">Laptop</label>
@@ -29,7 +31,10 @@
         </div>
     </div>
 
-    <div style="margin:20px 0">
-        <%= f.submit "Submit", disable_with: 'Submiting...', class:"btn btn-primary" %>
+    <div style="margin:20px 0;width:100%">
+        <%= f.submit "Submit", disable_with: 'Submiting...', class:"btn btn-primary", style:"width:100%" %>
+    </div>
+
+    </div>
     </div>
 <% end %>

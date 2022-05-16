@@ -1,18 +1,29 @@
 <h1>AdherentSessions#new</h1>
 
-<hr>
 <%= form_for @adherent, :url => { :action => 'create' }  do |f| %>
-    <div style = "margin: 10px 0">
-        <%=f.label :email, "Email" %><br>
-        <%= f.text_field :email, placeholder: "Taper ici" %><br>
+
+    <div class="card" >
+        <div class="card-body" >
+
+    <div style = "margin: 10px 0;width:100%">
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1" style="width:8.5em">E-mail</span>
+            <%= f.text_field :email, placeholder: "Entrez votre addresse E-mail | eg : exemple.exemple@xyz.com", class:"form-control" %><br>
+        </div>
     </div>
 
-    <div style = "margin: 10px 0">
-        <%=f.label :password, "Password" %><br>
-        <%= f.password_field :password, placeholder: "Taper ici" %><br>
+    <div style = "margin: 10px 0;width:100%">
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1" style="width:8.5em">Password</span>
+            <%= f.password_field :password, placeholder: "Entrez votre mot de passe", class:"form-control" %><br>
+        </div>
     </div>
     
-    <div style = "margin: 20px 0">
-        <%= f.submit "Submit", disable_with: 'Submiting...', class: 'btn btn-outline-primary login-btn' %>
+    <div style="margin-bottom:10px; margin-top:30px;width:100%">
+        <%= f.submit "Submit", disable_with: 'Submiting...', class:"btn btn-outline-primary", style:"width:100%" %>
     </div>
+
+    </div>
+    </div>
+
 <% end %>

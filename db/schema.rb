@@ -31,7 +31,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_15_230643) do
   end
 
   create_table "documents", force: :cascade do |t|
-    t.integer "auteur_id", null: false
+    t.integer "auteur_id"
     t.string "code"
     t.string "titre"
     t.string "publie"

@@ -1,37 +1,109 @@
 <h1>Documents#index</h1>
 
-<% if !@documents.blank? %>
-    <div class="container">
-        <div class="row">
-            <% for item in @documents %>
-                <div class="col">
-                    <div class="card" style="width: fit-content;">
+
+<% if !@current_adherent.admin? %>
+    <br>
+    <hr>
+    <h5>Documents que vous disposez :</h5>
+
+    <% if !@current_adherent.documents.blank? %>
+    <div style="display:flex; flex-wrap:wrap; gap:.8rem;">
+            <% for item in @current_adherent.documents %>
+                    
+                    <div class="card" style="flex: 1 1 max(20%, 200px);">
                         <div class="card-body">
-                            <h5 class="card-title"><%= " #{item.titre} #{item.code} " %></h5>
-                            <p class="card-text">Auteur : <%= item.auteur %></p>
-                            <p class="card-text">Langue : <%= item.langue %></p>
-                            <p class="card-text">Publie : <%= item.publie %></p>
-                            <p class="card-text">Categorie : <%= item.categorie %></p>
+                            <h5 class="card-title"><%= " #{item.titre} ( #{item.code} ) " %></h5>
                             <p class="card-text">Status : <%= item.status %></p>
+                            <p class="card-text">Publie : <%= item.publie %></p>
+                            <p class="card-text">Langue : <%= item.langue %></p>
+                            <p class="card-text">Catégorie : <%= item.categorie %></p>
                             <div class="row">
                                 <div class="col">
-                                    <a class="btn btn-primary"><%= link_to 'Supprimer Livre', '/destroy_livre' %></a>
+                                    <%= link_to "Rendre", '/documents/'+item.id.to_s+'/rendre', method: :post, class:"btn btn-outline-dark", style:"width:100%;margin: 5px 0" %>
                                 </div>
-                                <% if item.status == 1 %>
-                                    <div class="col">
-                                        <a class="btn btn-primary"><%= link_to 'Emprunter Livre', '/emprunter_livre' %></a>
-                                    </div>
-                                <% else %>
-                                    <div class="col">
-                                        <a class="btn btn-primary"><%= link_to 'Rendre Livre', '/rendre_livre' %></a>
-                                    </div>
-                                <% end %>
+                            </div>
+                        </div>
+                    </div>
+            <% end %>
+        </div>
+    <% else %>
+        <div class="card">
+            <div class="card-body">
+                Section des documents <strong>empruntés</strong> est vide.
+            </div>
+        </div>
+    <% end %>
+
+<% end %>
+
+<br>
+<hr>
+<h5>Documents qu'ils sont disponibles pour vous :</h5>
+
+<% if !@documents.blank? %>
+    <div style="display:flex; flex-wrap:wrap; gap:.8rem;">
+        <% if @current_adherent.admin? %>
+                <div class="card" style="width: 100%;margin: 20px 0">
+                    <div class="card-body">
+                        <h5 class="card-title">Ajouter document :</h5>
+                        <p class="card-text">Pour ajouter un document cliquer sur la boutton dessous.</p>
+                        <%= link_to "Ajouter document", '/documents/new', class:"btn btn-primary" %>
+                    </div>
+                </div>
+            
+            <% for item in @documents %>
+                
+                <div class="card" style="flex: 1 1 max(20%, 200px);">
+                    <div class="card-body">
+                        <h5 class="card-title"><%= " #{item.titre} ( #{item.code} ) " %></h5>
+                            <p class="card-text">Status : <%= item.status %></p>
+                            <% if @current_adherent.admin? && !item.adherent_id.nil? %>
+                                <p class="card-text">Emprunteur : <%= " #{Adherent.find(item.adherent_id).nom} #{Adherent.find(item.adherent_id).prenom} " %></p>
+                            <% else %>
+                                <p class="card-text">Emprunteur : <i class="fa-solid fa-ban"></i> </p>
+                            <% end %>
+                            <p class="card-text">Publie : <%= item.publie %></p>
+                            <p class="card-text">Langue : <%= item.langue %></p>
+                            <p class="card-text">Catégorie : <%= item.categorie %></p>
+                        <div class="row">
+                            <div class="col">
+                                <%= link_to "Supprimer", item, method: :delete, class:"btn btn-outline-danger", style:"width:100%;margin: 5px 0" %>
                             </div>
                         </div>
                     </div>
                 </div>
             <% end %>
-        </div>
+
+        <% else %>
+            <% for item in @documents.filter { |document| document.status.include? 'Disponible' } %>
+                
+                <div class="card" style="flex: 1 1 max(20%, 200px);">
+                    <div class="card-body">
+                        <h5 class="card-title"><%= " #{item.titre} ( #{item.code} ) " %></h5>
+                            <p class="card-text">Status : <%= item.status %></p>
+                            <p class="card-text">Publie : <%= item.publie %></p>
+                            <p class="card-text">Langue : <%= item.langue %></p>
+                            <p class="card-text">Catégorie : <%= item.categorie %></p>
+                        <div class="row">
+                            <div class="col">
+                                <%= link_to "Emprunter", '/documents/'+item.id.to_s+'/emprunter', method: :post, class:"btn btn-primary", style:"width:100%;margin: 5px 0" %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <% end %>
+
+            
+            <% if @documents.filter { |document| document.status.include? 'Disponible' }.blank? %>
+                <div class="card">
+                    <div class="card-body">
+                        Section des documents <strong>disponibles</strong> est vide.
+                    </div>
+                </div>
+            <% end %>
+            
+        <% end %>
+
     </div>
 <% else %>
     <div class="card">
@@ -39,4 +111,15 @@
             Section des documents est vide.
         </div>
     </div>
+    
+    <% if @current_adherent.admin? %>
+        <div class="card" style="width: 100%;margin: 20px 0">
+            <div class="card-body">
+                <h5 class="card-title">Ajouter document :</h5>
+                <p class="card-text">Pour ajouter un document cliquer sur la boutton dessous.</p>
+                <%= link_to "Ajouter document", '/documents/new', class:"btn btn-primary" %>
+            </div>
+        </div>
+    <% end %>
+    
 <% end %>
