@@ -14,6 +14,7 @@
                             <div class="card-body">
                                 <h5 class="card-title"><%= " #{item.type_materiel} #{item.code} " %></h5>
                                 <p class="card-text">Status : <%= item.status %></p>
+                                <p class="card-text">Type : <%= item.type_materiel %></p>
                                 <div class="row">
                                     <div class="col">
                                         <%= link_to "Rendre", '/materiels/'+item.id.to_s+'/rendre', method: :post, class:"btn btn-outline-dark", style:"width:100%;margin: 5px 0" %>
@@ -55,6 +56,7 @@
                     <div class="card-body">
                         <h5 class="card-title"><%= " #{item.type_materiel} #{item.code} " %></h5>
                         <p class="card-text">Status : <%= item.status %></p>
+                        <p class="card-text">Type : <%= item.type_materiel %></p>
                         <% if @current_adherent.admin? && !item.adherent_id.nil? %>
                             <p class="card-text">Emprunteur : <%= " #{Adherent.find(item.adherent_id).nom} #{Adherent.find(item.adherent_id).prenom} " %></p>
                         <% else %>
@@ -76,6 +78,7 @@
                     <div class="card-body">
                         <h5 class="card-title"><%= " #{item.type_materiel} #{item.code} " %></h5>
                         <p class="card-text">Status : <%= item.status %></p>
+                        <p class="card-text">Type : <%= item.type_materiel %></p>
                         <div class="row">
                             <div class="col">
                                 <%= link_to "Emprunter", '/materiels/'+item.id.to_s+'/emprunter', method: :post, class:"btn btn-primary", style:"width:100%;margin: 5px 0" %>

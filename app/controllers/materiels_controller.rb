@@ -48,6 +48,9 @@ class MaterielsController < ApplicationController
     def destroy
         @materiel = Materiel.find(params[:id])
         if @materiel.destroy
+            if @materiel.status.include? 'En_rupture'
+                Adherent.find(@materiel.adherent_id).update_attribute(:quota_materiel, " #{Adherent.find(@materiel.adherent_id).quota_materiel+=1} ")
+            end
             flash[:success] = 'materiel was successfully deleted.'
             redirect_to materiels_url
         else

@@ -9,11 +9,11 @@ class Materiel < ApplicationRecord
     En_Rupture: false,
     Disponible: true
   }
-  enum :type_materiel, {
-    Laptop: 0,
-    Souris:1,
-    Clavier:2,
-    CD: 3,
-    USB: 4,
+  enum type_materiel: {
+    Laptop: '0',
+    Souris: '1',
+    Clavier: '2',
+    CD: '3',
+    USB: '4',
   }
 end

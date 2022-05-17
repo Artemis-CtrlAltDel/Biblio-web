@@ -6,7 +6,7 @@ class DocumentsController < ApplicationController
     # GET /documents
     def index
         @documents = Document.all
-        puts "test", @documents[4].Horreur?
+        # puts "test", @documents[4].Horreur?
     end
     # GET /documents/:id
     def show
@@ -47,6 +47,9 @@ class DocumentsController < ApplicationController
     def destroy
         @document = Document.find(params[:id])
         if @document.destroy
+            if @document.status.include? 'En_rupture'
+                Adherent.find(@document.adherent_id).update_attribute(:quota_document, " #{Adherent.find(@document.adherent_id).quota_document+=1} ")
+            end
             flash[:success] = 'Document was successfully deleted.'
             redirect_to documents_url
         else

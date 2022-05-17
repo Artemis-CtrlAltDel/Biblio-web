@@ -51,7 +51,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_17_102217) do
     t.boolean "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "type_materiel"
+    t.integer "type_materiel", default: 0
     t.index ["adherent_id"], name: "index_materiels_on_adherent_id"
   end
 
