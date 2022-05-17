@@ -25,13 +25,13 @@
         <div class="input-group">
             <span class="input-group-text" style="width:8.5em">Langue </span>
             <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                <%= f.radio_button :langue, :langue, :value => 0, class:"btn-check", id:"btnradio1", name:"btnradio", autocomplete:"off", checked:true %>
+                <%= f.radio_button :langue, 0, class:"btn-check", id:"btnradio1", autocomplete:"off", checked:true %>
                 <label class="btn btn-outline-dark" for="btnradio1">Français</label>
 
-                <%= f.radio_button :langue, 1, class:"btn-check", id:"btnradio2", name:"btnradio", autocomplete:"off" %>
+                <%= f.radio_button :langue, 1, class:"btn-check", id:"btnradio2", autocomplete:"off" %>
                 <label class="btn btn-outline-dark" for="btnradio2">Arabe</label>
 
-                <%= f.radio_button :langue, 2, class:"btn-check", id:"btnradio3", name:"btnradio", autocomplete:"off" %>
+                <%= f.radio_button :langue, 2, class:"btn-check", id:"btnradio3", autocomplete:"off" %>
                 <label class="btn btn-outline-dark" for="btnradio3">Anglais</label>
             </div>
         </div>
@@ -40,16 +40,16 @@
         <div class="input-group">
             <span class="input-group-text" style="width:8.5em">Catégorie </span>
             <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                <%= f.radio_button :categorie, 0, class:"btn-check", id:"btnradio3", name:"categorieradio", autocomplete:"off", checked:true %>
+                <%= f.radio_button :categorie, 0, class:"btn-check", id:"categorieradio3", autocomplete:"off", checked:true %>
                 <label class="btn btn-outline-dark" for="categorieradio3">Horreur</label>
 
-                <%= f.radio_button :categorie, 1, class:"btn-check", id:"categorieradio4", name:"categorieradio", autocomplete:"off" %>
+                <%= f.radio_button :categorie, 1, class:"btn-check", id:"categorieradio4", autocomplete:"off" %>
                 <label class="btn btn-outline-dark" for="categorieradio4">Comédie</label>
 
-                <%= f.radio_button :categorie, 2, class:"btn-check", id:"categorieradio5", name:"categorieradio", autocomplete:"off" %>
+                <%= f.radio_button :categorie, 2, class:"btn-check", id:"categorieradio5", autocomplete:"off" %>
                 <label class="btn btn-outline-dark" for="categorieradio5">Mystère</label>
 
-                <%= f.radio_button :categorie, 3, class:"btn-check", id:"categorieradio6", name:"categorieradio", autocomplete:"off" %>              
+                <%= f.radio_button :categorie, 3, class:"btn-check", id:"categorieradio6", autocomplete:"off" %>              
                 <label class="btn btn-outline-dark" for="categorieradio6">Drama</label>
             </div>
         </div>

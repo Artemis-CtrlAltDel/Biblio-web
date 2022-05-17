@@ -6,6 +6,7 @@ class DocumentsController < ApplicationController
     # GET /documents
     def index
         @documents = Document.all
+        puts "test", @documents[4].Horreur?
     end
     # GET /documents/:id
     def show

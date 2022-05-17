@@ -9,22 +9,23 @@ class Document < ApplicationRecord
 
   validates_presence_of :titre, on: :create
   validates_presence_of :publie, on: :create
-  # validates_presence_of :langue, on: :create
-  # validates_presence_of :categorie, on: :create
+  validates_presence_of :categorie, on: :create
+
+  validates :langue, presence: true
 
   enum :status, {
     En_Rupture: false,
     Disponible: true
   }
-  enum :categorie, {
-    Horreur: 0,
-    Comédie: 1,
-    Mystère: 2,
-    Drama: 3
+  enum categorie: {
+    Horreur: '0',
+    Comédie: '1',
+    Mystère: '2',
+    Drama: '3'
   }
-  enum :langue, {
-    fr: 0,
-    ar: 1,
-    en: 2,
+  enum langue: {
+    fr: '0',
+    ar: '1',
+    en: '2',
   }
 end

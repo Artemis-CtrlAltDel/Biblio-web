@@ -20,7 +20,9 @@ class MaterielsController < ApplicationController
     end
     # POST /materiels
     def create
+        puts "params = ",materiel_params
         @materiel = Materiel.new(materiel_params)
+        puts "mat= ",@materiel
         @materiel.status = true
         if @materiel.save
           flash[:success] = "materiel successfully created"
@@ -92,6 +94,6 @@ class MaterielsController < ApplicationController
             @materiel = Materiel.find(params[:id])
         end
         def materiel_params
-            params.require(:materiel).permit(:code, :type)
+            params.require(:materiel).permit(:code, :type_materiel)
         end
 end

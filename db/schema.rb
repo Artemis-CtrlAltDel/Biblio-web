@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_15_230643) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_17_102217) do
   create_table "adherents", force: :cascade do |t|
     t.string "nom"
     t.string "prenom"
@@ -36,11 +36,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_15_230643) do
     t.string "titre"
     t.string "publie"
     t.string "langue"
-    t.integer "categorie"
     t.boolean "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "adherent_id"
+    t.string "categorie", default: "0"
     t.index ["adherent_id"], name: "index_documents_on_adherent_id"
     t.index ["auteur_id"], name: "index_documents_on_auteur_id"
   end
@@ -48,10 +48,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_15_230643) do
   create_table "materiels", force: :cascade do |t|
     t.integer "adherent_id"
     t.string "code"
-    t.integer "type"
     t.boolean "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "type_materiel"
     t.index ["adherent_id"], name: "index_materiels_on_adherent_id"
   end
 

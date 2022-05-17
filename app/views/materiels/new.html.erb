@@ -13,19 +13,19 @@
         <div class="input-group mb-3">
             <span class="input-group-text" style="width:8.5em">Type </span>
             <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                <%= f.radio_button :type, 0, value: 0, class:"btn-check", id:"btnradio1", name:"btnradio", autocomplete:"off", checked:true %>
+                <%= f.radio_button :type_materiel, 0, value: 0, class:"btn-check", id:"btnradio1", autocomplete:"off", checked:true %>
                 <label class="btn btn-outline-dark" for="btnradio1">Laptop</label>
 
-                <%= f.radio_button :type, 1, class:"btn-check", id:"btnradio2", name:"btnradio", autocomplete:"off" %>
+                <%= f.radio_button :type_materiel, 1, class:"btn-check", id:"btnradio2", autocomplete:"off" %>
                 <label class="btn btn-outline-dark" for="btnradio2">Souris</label>
 
-                <%= f.radio_button :type, 2, class:"btn-check", id:"btnradio3", name:"btnradio", autocomplete:"off" %>
+                <%= f.radio_button :type_materiel, 2, class:"btn-check", id:"btnradio3", autocomplete:"off" %>
                 <label class="btn btn-outline-dark" for="btnradio3">Clavier</label>
 
-                <%= f.radio_button :type, 3, class:"btn-check", id:"btnradio4", name:"btnradio", autocomplete:"off" %>              
+                <%= f.radio_button :type_materiel, 3, class:"btn-check", id:"btnradio4", autocomplete:"off" %>              
                 <label class="btn btn-outline-dark" for="btnradio4">CD</label>
 
-                <%= f.radio_button :type, 4, class:"btn-check", id:"btnradio5", name:"btnradio", autocomplete:"off" %>             
+                <%= f.radio_button :type_materiel, 4, class:"btn-check", id:"btnradio5", autocomplete:"off" %>             
                 <label class="btn btn-outline-dark" for="btnradio5">USB</label>
             </div>
         </div>
