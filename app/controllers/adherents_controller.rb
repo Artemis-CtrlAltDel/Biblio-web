@@ -17,7 +17,6 @@ class AdherentsController < ApplicationController
     end
     @adherent = Adherent.new
   end
-  
 
   def create
     if logged_in?

@@ -67,7 +67,7 @@
                             <p class="card-text">Catégorie : <%= item.categorie %></p>
                         <div class="row">
                             <div class="col">
-                                <%= link_to "Supprimer", item, method: :delete, class:"btn btn-outline-danger", style:"width:100%;margin: 5px 0" %>
+                                <%= link_to "Supprimer", item, method: :delete, class:"btn "+ ( item.adherent_id.nil? ? "btn-outline-danger" : "btn-outline-dark disabled" ), style:"width:100%;margin: 5px 0" %>
                             </div>
                         </div>
                     </div>
