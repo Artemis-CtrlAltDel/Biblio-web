@@ -1,2 +1,1 @@
-School assignment
-A mini library management system as a web app created using the framework Ruby on Rails
+School assignment: Mini library management web app built with Ruby on Rails framework.
